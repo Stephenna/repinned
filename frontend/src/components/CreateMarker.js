@@ -13,8 +13,13 @@ const CreateMarker = ({ lat, long, setNewPlace, pin, setPin }) => {
         onClose={() => setNewPlace(null)}
         anchor="left"
       >
-      
-        <InputForm lat={lat} long={long}  pin={pin} setPin={setPin} setNewPlace={setNewPlace}/>
+        <InputForm
+          lat={lat}
+          long={long}
+          pin={pin}
+          setPin={setPin}
+          setNewPlace={setNewPlace}
+        />
       </Popup>
     </div>
   );

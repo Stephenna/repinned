@@ -1,56 +1,64 @@
-import React, {useState, useRef} from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
-import { CancelOutlined } from '@material-ui/icons';
+import { CancelOutlined } from "@material-ui/icons";
 import http from "../../http";
 
-const Login = ({setCurrentUser, setShowLogin, storage}) => {
-    const [invalid, setInvalid] = useState(false)
-    const nameRef = useRef();
-    const passwordRef = useRef();
+const Login = ({ setCurrentUser, setShowLogin, storage }) => {
+  const [invalid, setInvalid] = useState(false);
+  const nameRef = useRef();
+  const passwordRef = useRef();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        const user = {
-            username: nameRef.current.value,
-            password: passwordRef.current.value,
-        }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const user = {
+      username: nameRef.current.value,
+      password: passwordRef.current.value,
+    };
 
-        try {
-            const res = await http.post("/users/login", user);
-            storage.setItem("user", res.data.username)
-            setCurrentUser(res.data.username);
-            setShowLogin(false)
-            setInvalid(false)
-        } catch (e) {
-            setInvalid(true)
-            console.log(`FRONT-END: error posting user to backend: ${e}`);
-
-        }
-
-
+    try {
+      const res = await http.post("/users/login", user);
+      storage.setItem("user", res.data.username);
+      setCurrentUser(res.data.username);
+      setShowLogin(false);
+      setInvalid(false);
+    } catch (e) {
+      setInvalid(true);
+      console.log(`FRONT-END: error posting user to backend: ${e}`);
     }
+  };
 
-    return (
-        <LoginContainer>
-            <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="username" ref={nameRef}/>
-                <input type="text" placeholder="password" ref={passwordRef} />
-                <button className="buttonLogin">Login</button>
-            </form>
+  return (
+    <LoginContainer>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="">Login: </label>
+        <input
+          type="text"
+          placeholder="username"
+          ref={nameRef}
+          className="login-form"
+        />
+        <input
+          type="text"
+          placeholder="password"
+          ref={passwordRef}
+          className="login-form"
+        />
+        <button className="buttonLogin">enter</button>
+      </form>
 
-            {
-                invalid && 
-                <Failed>
-                    <p>Uh Oh! Incorrect password/username!</p>
-                </Failed> 
-            }
+      {invalid && (
+          <p className="failed">Uh Oh! Incorrect password/username!</p>
+      )}
 
-            <CancelOutlined className="registerCancel" onClick={() => setShowLogin(false)}/>
-        </LoginContainer>
-    )
-}
+      <CancelOutlined
+        className="registerCancel"
+        onClick={() => setShowLogin(false)}
+      />
+    </LoginContainer>
+  );
+};
 
-export default Login
+export default Login;
 
 const LoginContainer = styled.div`
   width: 275px;
@@ -68,8 +76,8 @@ const LoginContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  box-shadow: #c9007544 0px 7px 29px 0px;
-`
+  box-shadow: #c9007590 0px 10px 35px 0px;
+`;
 const Failed = styled.div`
 
-`
+`;

@@ -2,18 +2,18 @@ import React, { useState } from "react";
 import ReactMapGL from "react-map-gl";
 import DisplayAllPins from "./components/DisplayAllPins";
 import CreateMarker from "./components/CreateMarker";
-import ControlBox from "./components/ControlBox"
+import ControlBox from "./components/ControlBox";
 import dotenv from "dotenv";
 
 dotenv.config();
 
 const Map = () => {
-    const storage = window.localStorage;
+  const storage = window.localStorage;
   const [toggle, setToggle] = useState(false);
   const [toggleIcon, setToggleIcon] = useState(false);
   const [newPlace, setNewPlace] = useState(null);
   const [pin, setPin] = useState([]);
-  const [currentUser, setCurrentUser] = useState(null)
+  const [currentUser, setCurrentUser] = useState(null);
   const [viewport, setViewport] = useState({
     width: "100vw",
     height: "100vh",
@@ -39,7 +39,8 @@ const Map = () => {
     setToggleIcon(!toggleIcon);
   };
 
-  let moon = "mapbox://styles/mapbox/dark-v9";
+  let moon =
+    "mapbox://mapbox://styles/sjcstephenna/ckwy5xoqb1jjl14tjgczgdgzf/mapbox/dark-v9";
   let sun = "mapbox://styles/mapbox/streets-v11";
 
   return (
@@ -50,10 +51,12 @@ const Map = () => {
       mapStyle={toggleIcon ? moon : sun}
       onViewportChange={(nextViewport) => setViewport(nextViewport)}
       mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
-      onDblClick={AddPin}
+      onDblClick={currentUser === null ? false : AddPin}
     >
-      <button className="mode" onClick={mode}>{toggleIcon ? "🌞" : "🌚"}</button>
-      
+      <button className="mode" onClick={mode} alt="">
+        {toggleIcon ? "🌞" : "🌚"}
+      </button>
+
       <DisplayAllPins
         viewport={viewport}
         setViewport={setViewport}
@@ -72,11 +75,16 @@ const Map = () => {
         />
       )}
 
-    <ControlBox  currentUser={currentUser} setCurrentUser={setCurrentUser} storage={storage} toggleIcon={toggleIcon} setToggleIcon={setToggleIcon} mode={mode}/>
+      <ControlBox
+        currentUser={currentUser}
+        setCurrentUser={setCurrentUser}
+        storage={storage}
+        toggleIcon={toggleIcon}
+        setToggleIcon={setToggleIcon}
+        mode={mode}
+      />
     </ReactMapGL>
   );
 };
 
 export default Map;
-
-

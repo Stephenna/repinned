@@ -1,16 +1,22 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { Marker } from "react-map-gl";
-import { Room, } from "@material-ui/icons";
+import { Room } from "@material-ui/icons";
 import ClickedMarker from "./ClickedMarker";
 import http from "../http";
 
-const DisplayAllPins = ({ viewport, setViewport, pin, updatePinState, currentUser}) => {
+const DisplayAllPins = ({
+  viewport,
+  setViewport,
+  pin,
+  updatePinState,
+  currentUser,
+}) => {
   const [currentPlaceId, setCurrentPlaceId] = useState(null);
 
   const pleaseWork = (res) => {
-    updatePinState(res.data)
-  }  
+    updatePinState(res.data);
+  };
 
   useEffect(() => {
     const getPins = async () => {
@@ -45,17 +51,18 @@ const DisplayAllPins = ({ viewport, setViewport, pin, updatePinState, currentUse
             offsetTop={-viewport.zoom * 7}
           >
             <Room
+              className="room"
               style={{
                 fontSize: viewport.zoom * 7,
                 color: body.username === currentUser ? "#c90076" : "#16537e",
                 cursor: "pointer",
-                zIndex: '-1 !important',
               }}
               onClick={() => DisplayFilledForm(body._id, body.lat, body.long)}
             />
           </Marker>
           {body._id === currentPlaceId && (
             <ClickedMarker
+              className="clickedMarker"
               id={body._id}
               lat={body.lat}
               long={body.long}

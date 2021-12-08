@@ -7,7 +7,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
+.mode{
+  font-size: 50px;
+  background-color: transparent;
+  position: absolute;
+  bottom: 0;
+  left: 200px;
+}
+.mode:hover{
+  font-size: 75px;
+}
 button{
   border: none;
   padding: 5px;
@@ -30,6 +39,7 @@ button{
 .login:hover{
   color: #c90076;
   background-color: aliceblue;
+  
 }
 
 .register{
@@ -37,77 +47,176 @@ button{
   color: white;
   font-size: 18px;
   font-weight: 600;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 0px;
+  
 }
 .register:hover{
   color: #f44336;
   background-color: aliceblue;
+  border-color: #f44336;
 }
 
 .logout{
-  background-color: #16537e;
-  font-size: 18px;
+  background-color: rgb(147, 245, 0);
+  font-size: 24px;
   font-weight: 600;
   width: 200px;
-  height: 50px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  height: 80px;
+  
 }
 .logout:hover{
-  color: #16537e;
-  background-color: aliceblue;
+  color: rgb(147, 245, 0);
+  background-color: white;
+  border-color: rgb(147, 245, 0);
 }
+
 
 .card{
-  position: relative;
+  padding: 0, 20px;
+  border-radius: 15px;
+  height: 250px;
   width: 250px;
-  height: 350px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  z-index: 10000;
 }
-label{
-  width: max-content;
+.card-header{
+  align-items: center;
+  padding: 0px 0px;
+  text-align: center;
   color: #f44336;
-  font-size: 16px;
-  font-weight: 800;
-  border-bottom: .5px solid #f44336 ;
-  margin: 5px 0;
 }
+.card-header > h1{
+  text-align: center;
+  border-bottom: #f4433650 .2px solid;
+  padding: 10px;
 
-.desc{
-  font-size: 14px;
 }
-
-.star{
-  color: goldenrod
+.card-header > h1 {
+  font-weight: 100;
+  margin-bottom: 5px;
+}
+.user{
+  display: flex;
+  justify-content:space-between ;
+  align-items: center;
+  padding: 10px;
+}
+.card-body{
+  margin: 10px
 }
 
 .username{
-  font-size: 14px;
+  /* padding: 10px; */
+  font-size: 18px;
+  color: black;
+  
 }
 
-.date{
-  font-size: 12px;
+.bar{
+  height: 15px;
+  width: .5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: #16537e;
 }
+.date{
+  color: rgb(46, 45, 45);
+  
+}
+
+.stars{
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  margin: 10px;
+}
+
+.star{
+  color: goldenrod;
+}
+.desc{
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  font-size: 22px;
+  color: #16537ea2;
+  padding: 10px;
+  /* overflow: scroll; */
+}
+
+
+
 form{
-  width: 250px;
   height: 250px;
+  width: 250px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
+label{
+  font-size: 22px;
+  font-weight: lighter;
+  color: #c90076;
+}
 input{
   border: none;
-  border-bottom: 1px solid gray;
+  /* border-bottom: 1px solid #c90076; */
+  color: #0b2c44;
+}
+textarea{
+  border: none;
+}
+select{
+  border: none;
 }
 
 input::placeholder, textarea::placeholder{
   font-size: 12px;
   color: rgb(172, 169, 169)
+}
+
+textarea:focus, input:focus{
+  outline: none;
+  color: #0b2c44;
+  font-size: 15px
+  /* border: 1px solid #c90076; */
+}
+
+.login-form, input::placeholder{
+  font-size: 18px;
+  color: rgb(172, 169, 169)
+}
+
+.login-form, input{
+  font-size: 18px;
+  border-bottom: 1px solid #c90076;
+}
+
+.register-form, input::placeholder{
+  font-size: 18px;
+  color: rgb(172, 169, 169)
+}
+.register-form, input{
+  font-size: 18px;
+  border-bottom: 1px solid #f44336;
+}
+
+
+.form-submit{
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  color: aliceblue;
+  background-color: #f44336;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: medium;
+}
+.form-submit:hover{
+  color: #f44336;
+  background-color: white;
+  outline: #f44336 .5px solid;
+  font-weight: bold;
+  border-color: #f44336;
 }
 
 .submitButton{
@@ -130,6 +239,7 @@ input::placeholder, textarea::placeholder{
   color: crimson;
   font-size: 15px;
   text-align: center;
+  margin: 5px;
 }
 
 .registerCancel{
@@ -149,6 +259,7 @@ input::placeholder, textarea::placeholder{
   background-color: white;
   outline: #f44336 .5px solid;
   font-weight: bold;
+  border-color: #f44336;
 }
 
 .logo{
@@ -156,8 +267,8 @@ input::placeholder, textarea::placeholder{
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 22px;
-  padding-bottom: 15px;
+  font-size: 30px;
+  padding-bottom: 20px;
   font-weight: 900;
 }
 textarea:focus, input:focus{
@@ -173,5 +284,14 @@ textarea:focus, input:focus{
 .buttonLogin:hover{
   color: #c90076;
   background-color: aliceblue;
-  outline: #c90076 .5px solid;
+  border: #c90076 .5px solid;
 }
+
+.room{
+  z-index: -1
+}
+
+.popup{
+  z-index: 1000,
+}
+

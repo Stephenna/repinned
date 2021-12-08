@@ -11,11 +11,10 @@ const ClickedMarker = ({
   rating,
   username,
   createdAt,
-  setCurrentPlaceId
+  setCurrentPlaceId,
 }) => {
-
   return (
-    <div>
+    <div className="createdMarker">
       <Popup
         key={id}
         latitude={lat}
@@ -24,6 +23,7 @@ const ClickedMarker = ({
         closeOnClick={false}
         onClose={() => setCurrentPlaceId(null)}
         anchor="top"
+        className="popup"
       >
         <FilledForm
           id={id}

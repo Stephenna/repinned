@@ -3,53 +3,58 @@ import Login from "./account/Login";
 import Register from "./account/Register";
 import styled from "styled-components";
 import { NavigationControl } from "react-map-gl";
-import { EditLocationOutlined} from '@material-ui/icons';
+import { EditLocationOutlined } from "@material-ui/icons";
 const ControlBox = ({ currentUser, setCurrentUser, storage }) => {
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
   const navControl = {
-   color: 'pink',
-  }
+    color: "pink",
+  };
 
   return (
-    <Container>
-    <div className="logo"><EditLocationOutlined />Pinned</div>
-    <NavigationControl  style={navControl}/>
-      <Buttons>
-        {currentUser ? (
-          <button
-            className="logout"
-            onClick={() => {
-              storage.removeItem("user");
-              setCurrentUser(null);
-            }}
-          >
-            Logout
-          </button>
-        ) : (
-          <div className="userBtns">
-            <button
-              className="login"
-              onClick={() => {
-                setShowLogin(true);
-                setShowRegister(false);
-              }}
-            >
-              Login
-            </button>
-            <button
-              className="register"
-              onClick={() => {
-                setShowRegister(true);
-                setShowLogin(false);
-              }}
-            >
-              Register
-            </button>
-          </div>
-        )}
-      </Buttons>
+    <div className="container-body">
+      <NavigationControl style={navControl} />
+      <Container>
+        <div className="logo">
+          <EditLocationOutlined />
+          Pinned
+        </div>
 
+        <Buttons>
+          {currentUser ? (
+            <button
+              className="logout"
+              onClick={() => {
+                storage.removeItem("user");
+                setCurrentUser(null);
+              }}
+            >
+              Logout
+            </button>
+          ) : (
+            <div className="userBtns">
+              <button
+                className="login"
+                onClick={() => {
+                  setShowLogin(true);
+                  setShowRegister(false);
+                }}
+              >
+                Login
+              </button>
+              <button
+                className="register"
+                onClick={() => {
+                  setShowRegister(true);
+                  setShowLogin(false);
+                }}
+              >
+                Register
+              </button>
+            </div>
+          )}
+        </Buttons>
+      </Container>
       {showLogin && (
         <Login
           currentUser={currentUser}
@@ -60,27 +65,32 @@ const ControlBox = ({ currentUser, setCurrentUser, storage }) => {
       )}
 
       {showRegister && <Register setShowRegister={setShowRegister} />}
-     
-    </Container>
+    </div>
   );
 };
 
 export default ControlBox;
 
 const Container = styled.div`
-  height: 250px;
+  height: 150px;
   width: 200px;
   background-color: white;
   position: absolute;
-  top: 50px;
+  bottom: 0px;
   left: 0px;
-  border-radius: 10px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 0px,
+  border-bottom-right-radius: 10px,
+  padding-top: 25px;
+  z-index: 1000;
+  ${'' /* box-shadow: #16537e 0px 7px 29px 0px; */}
 `;
 const Buttons = styled.div`
   position: absolute;
   right: 0;
   bottom: 0;
-  ${'' /* width: 400px;
-  height: 50px; */}
+  ${
+    "" /* width: 400px;
+  height: 50px; */
+  }
 `;
-
