@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Pinned from './Pinned'
+import Map from "./Map"
 
 
 ReactDOM.render(
   <>
-    <Pinned />
+    <Map />
   </>,
   document.getElementById('root')
 );

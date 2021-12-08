@@ -7,11 +7,14 @@ import { EditLocationOutlined} from '@material-ui/icons';
 const ControlBox = ({ currentUser, setCurrentUser, storage }) => {
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
+  const navControl = {
+   color: 'pink',
+  }
 
   return (
     <Container>
     <div className="logo"><EditLocationOutlined />Pinned</div>
-      <Zoom />
+    <NavigationControl  style={navControl}/>
       <Buttons>
         {currentUser ? (
           <button
@@ -57,7 +60,7 @@ const ControlBox = ({ currentUser, setCurrentUser, storage }) => {
       )}
 
       {showRegister && <Register setShowRegister={setShowRegister} />}
-      <Zoom />
+     
     </Container>
   );
 };
@@ -81,7 +84,3 @@ const Buttons = styled.div`
   height: 50px; */}
 `;
 
-const Zoom = styled(NavigationControl)`
-    right: 10,
-    top: 20,
-`;

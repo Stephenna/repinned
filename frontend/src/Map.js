@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import ReactMapGL from "react-map-gl";
-import DisplayAllPins from "./DisplayAllPins";
-import CreateMarker from "./CreateMarker";
-import ControlBox from "./ControlBox"
+import DisplayAllPins from "./components/DisplayAllPins";
+import CreateMarker from "./components/CreateMarker";
+import ControlBox from "./components/ControlBox"
 import dotenv from "dotenv";
 
 dotenv.config();
