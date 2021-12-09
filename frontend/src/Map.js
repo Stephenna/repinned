@@ -39,9 +39,9 @@ const Map = () => {
     setToggleIcon(!toggleIcon);
   };
 
-  let moon =
-    "mapbox://mapbox://styles/sjcstephenna/ckwy5xoqb1jjl14tjgczgdgzf/mapbox/dark-v9";
-  let sun = "mapbox://styles/mapbox/streets-v11";
+  let sun =
+  "mapbox://styles/sjcstephenna/ckwy5xoqb1jjl14tjgczgdgzf"
+  let moon = "mapbox://styles/mapbox/dark-v10";
 
   return (
     <ReactMapGL
@@ -53,7 +53,7 @@ const Map = () => {
       mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
       onDblClick={currentUser === null ? false : AddPin}
     >
-      <button className="mode" onClick={mode} alt="">
+      <button className="mode" onClick={mode}>
         {toggleIcon ? "🌞" : "🌚"}
       </button>
 
