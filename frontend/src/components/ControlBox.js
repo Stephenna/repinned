@@ -4,7 +4,7 @@ import Register from "./account/Register";
 import styled from "styled-components";
 import { NavigationControl } from "react-map-gl";
 import { EditLocationOutlined } from "@material-ui/icons";
-const ControlBox = ({ currentUser, setCurrentUser, storage }) => {
+const ControlBox = ({ currentUser, setCurrentUser, myStorage}) => {
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
   const navControl = {
@@ -17,7 +17,7 @@ const ControlBox = ({ currentUser, setCurrentUser, storage }) => {
       <Container>
         <div className="logo">
           <EditLocationOutlined />
-          Pinned
+          <p>Pinned</p>
         </div>
 
         <Buttons>
@@ -25,7 +25,7 @@ const ControlBox = ({ currentUser, setCurrentUser, storage }) => {
             <button
               className="logout"
               onClick={() => {
-                storage.removeItem("user");
+                myStorage.removeItem("user");
                 setCurrentUser(null);
               }}
             >
@@ -60,7 +60,7 @@ const ControlBox = ({ currentUser, setCurrentUser, storage }) => {
           currentUser={currentUser}
           setCurrentUser={setCurrentUser}
           setShowLogin={setShowLogin}
-          storage={storage}
+          myStorage={myStorage}
         />
       )}
 
@@ -83,7 +83,7 @@ const Container = styled.div`
   border-bottom-right-radius: 10px,
   padding-top: 25px;
   z-index: 1000;
-  ${'' /* box-shadow: #16537e 0px 7px 29px 0px; */}
+  ${"" /* box-shadow: #16537e 0px 7px 29px 0px; */}
 `;
 const Buttons = styled.div`
   position: absolute;

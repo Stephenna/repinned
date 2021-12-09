@@ -8,7 +8,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const Map = () => {
-  const storage = window.localStorage;
+  const myStorage = window.localStorage;
   const [toggle, setToggle] = useState(false);
   const [toggleIcon, setToggleIcon] = useState(false);
   const [newPlace, setNewPlace] = useState(null);
@@ -39,8 +39,7 @@ const Map = () => {
     setToggleIcon(!toggleIcon);
   };
 
-  let sun =
-  "mapbox://styles/sjcstephenna/ckwy5xoqb1jjl14tjgczgdgzf"
+  let sun = "mapbox://styles/sjcstephenna/ckwy5xoqb1jjl14tjgczgdgzf";
   let moon = "mapbox://styles/mapbox/dark-v10";
 
   return (
@@ -78,7 +77,7 @@ const Map = () => {
       <ControlBox
         currentUser={currentUser}
         setCurrentUser={setCurrentUser}
-        storage={storage}
+        myStorage={myStorage}
         toggleIcon={toggleIcon}
         setToggleIcon={setToggleIcon}
         mode={mode}

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { CancelOutlined } from "@material-ui/icons";
 import http from "../../http";
 
-const Login = ({ setCurrentUser, setShowLogin, storage }) => {
+const Login = ({ setCurrentUser, setShowLogin, myStorage} ) => {
   const [invalid, setInvalid] = useState(false);
   const nameRef = useRef();
   const passwordRef = useRef();
@@ -17,7 +17,7 @@ const Login = ({ setCurrentUser, setShowLogin, storage }) => {
 
     try {
       const res = await http.post("/users/login", user);
-      storage.setItem("user", res.data.username);
+      myStorage.setItem("user", res.data.username);
       setCurrentUser(res.data.username);
       setShowLogin(false);
       setInvalid(false);
@@ -43,12 +43,10 @@ const Login = ({ setCurrentUser, setShowLogin, storage }) => {
           ref={passwordRef}
           className="login-form"
         />
-        <button className="buttonLogin">enter</button>
+        <button className="buttonLogin">Enter</button>
       </form>
 
-      {invalid && (
-          <p className="failed">Uh Oh! Incorrect password/username!</p>
-      )}
+      {invalid && <p className="failed">Uh Oh! Incorrect password/username!</p>}
 
       <CancelOutlined
         className="registerCancel"
@@ -78,6 +76,4 @@ const LoginContainer = styled.div`
   justify-content: space-between;
   box-shadow: #c9007590 0px 10px 35px 0px;
 `;
-const Failed = styled.div`
 
-`;
