@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const path = require("path");
 const dotenv = require("dotenv");
 const cors = require("cors");
+
+const port = process.env.PORT || 5000;
 // routes
 const pinRoute = require('./routes/pinRoute')
 const userRoute = require('./routes/userRoute');
@@ -31,12 +33,15 @@ mongoose
 app.use("/pins", pinRoute);
 app.use("/users", userRoute);
 
-app.use(express.static(path.join(__dirname, "/frontend/build")));
+
+
+app.use(express.static(path.join(__dirname, "client", "build")));
+
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '/frontend/build', 'index.html'));
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
   });
 
 // Listening 
-app.listen(process.env.PORT || 8000, () => {
+app.listen(port, () => {
     console.log(`🚀 Server is running!`)
 })
