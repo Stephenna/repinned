@@ -5,7 +5,7 @@ const path = require("path");
 const dotenv = require("dotenv");
 const cors = require("cors");
 
-const port = process.env.PORT || 5000;
+
 // routes
 const pinRoute = require('./routes/pinRoute')
 const userRoute = require('./routes/userRoute');
@@ -42,6 +42,8 @@ app.get('*', (req, res) => {
   });
 
 // Listening 
-app.listen(port, () => {
+app.set('port', (process.env.PORT || 3001))
+
+app.listen(app.get('port'), () => {
     console.log(`🚀 Server is running!`)
 })
