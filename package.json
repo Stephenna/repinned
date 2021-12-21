@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "heroku-postbuild": "npm start && cd client && npm install && npm run build",
-    "start": "node index.js"
+    "start": "node index.js",
+    "heroku-postbuild": "cd client && npm install && npm run build && cd .. && npm start"
+    
   },
   "author": "",
   "license": "ISC",
