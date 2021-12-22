@@ -18,6 +18,7 @@ const Login = ({ setCurrentUser, setShowLogin, myStorage} ) => {
     try {
       const res = await http.post("/users/login", user);
       myStorage.setItem("user", res.data.username);
+      console.log(res.data.username)
       setCurrentUser(res.data.username);
       setShowLogin(false);
       setInvalid(false);

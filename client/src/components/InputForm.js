@@ -1,23 +1,23 @@
 import React, { useState } from "react";
 import http from "../http";
 
-const InputForm = ({ lat, long, pin, setPin, setNewPlace }) => {
+const InputForm = ({ username, lat, long, pin, setPin, setNewPlace }) => {
   const [title, setTitle] = useState(null);
   const [desc, setDesc] = useState(null);
   const [rating, setRating] = useState();
-
+  console.log(username)
   const createPin = async (e) => {
     e.preventDefault();
 
     const newPin = {
-      username: "currentUser",
+      username: username,
       title,
       desc,
       rating,
       lat: lat,
       long: long,
     };
-    console.log(newPin.lat, newPin.long, pin);
+    // console.log(newPin.lat, newPin.long, newPin.username);
     try {
       const res = await http.post("/pins", newPin);
       pin ? setPin([...pin, res.data]) : setPin([res.data]);

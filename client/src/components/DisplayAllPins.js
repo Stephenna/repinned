@@ -23,6 +23,7 @@ const DisplayAllPins = ({
       try {
         const res = await http.get("/pins");
         pleaseWork(res);
+        console.log(res.data)
       } catch (e) {
         console.log(`Error getting pins ${e}`);
       }
@@ -39,6 +40,7 @@ const DisplayAllPins = ({
     });
   };
 
+ 
   return (
     <div>
       {pin.map((body) => (

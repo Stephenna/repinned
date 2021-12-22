@@ -19,7 +19,7 @@ const ControlBox = ({ currentUser, setCurrentUser, myStorage}) => {
           <EditLocationOutlined />
           <p>Pinned</p>
         </div>
-
+{/* If currentUser exist, allow access to logout */}
         <Buttons>
           {currentUser ? (
             <button
@@ -32,7 +32,9 @@ const ControlBox = ({ currentUser, setCurrentUser, myStorage}) => {
               Logout
             </button>
           ) : (
+            
             <div className="userBtns">
+            {/* if currentUser doesnt exist display access to login / logout buttons */}
               <button
                 className="login"
                 onClick={() => {
@@ -55,8 +57,10 @@ const ControlBox = ({ currentUser, setCurrentUser, myStorage}) => {
           )}
         </Buttons>
       </Container>
+
       {showLogin && (
         <Login
+        // if showLogin state is set to true, pass these state states below to hold changes made in the login component.
           currentUser={currentUser}
           setCurrentUser={setCurrentUser}
           setShowLogin={setShowLogin}

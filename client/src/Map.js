@@ -21,9 +21,7 @@ const Map = () => {
     longitude: -122.4376,
     zoom: 3,
   });
-
-  //   console.log(pin)
-
+  console.log(currentUser)
   const AddPin = (e) => {
     // onDblClick returns event object.
     console.log(e);
@@ -33,7 +31,7 @@ const Map = () => {
       long,
     });
   };
-  //   console.log(newPlace)
+
   const mode = () => {
     setToggle(!toggle);
     setToggleIcon(!toggleIcon);
@@ -66,6 +64,7 @@ const Map = () => {
 
       {newPlace && (
         <CreateMarker
+          currentUser={currentUser}
           lat={newPlace.lat}
           long={newPlace.long}
           setNewPlace={setNewPlace}
